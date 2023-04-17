@@ -17,6 +17,7 @@ def loadFile():
     fileName = folder + "\\sales.csv"
     file = open(fileName, "r")
     fileLines = file.readlines()
+    file.close()
 
     return fileLines
 
