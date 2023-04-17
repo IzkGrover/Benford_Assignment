@@ -158,7 +158,6 @@ while userInput != exitCondition:
     elif userInput == fileAnalyze: 
         percentages = analyzeFile(file)
         print(percentages)
-        
 
     elif userInput == graphGeneration: 
         generateGraph()
