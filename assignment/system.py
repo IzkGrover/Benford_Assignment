@@ -115,7 +115,13 @@ def analyzeFile(file):
 
 
 def generateGraph():
-    pass
+    
+    result_fileName = folder + "\\" + "results.csv"
+    result_file = open("results.csv", "w")
+    result_file.write(percentages)
+    result_file.close()
+    
+
 
 
 
