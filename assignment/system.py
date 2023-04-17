@@ -31,36 +31,46 @@ def analyzeFile(file):
     number7 = 0
     number8 = 0
     number9 = 0
+    length = 0
 
     for line in file:
         if "1" in line[4]:
             number1 = number1 + 1
+            length = length + 1
         if "2" in line[4]:
             number2 = number2 + 1
+            length = length + 1
         if "3" in line[4]:
             number3 = number3 + 1
+            length = length + 1
         if "4" in line[4]:
             number4 = number4 + 1
+            length = length + 1
         if "5" in line[4]:
             number5 = number5 + 1
+            length = length + 1
         if "6" in line[4]:
             number6 = number6 + 1
+            length = length + 1
         if "7" in line[4]:
             number7 = number7 + 1
+            length = length + 1
         if "8" in line[4]:
             number8 = number8 + 1
+            length = length + 1
         if "9" in line[4]:
             number9 = number9 + 1
+            length = length + 1
 
-    percent1 = number1/1620*100
-    percent2 = number2/1620*100
-    percent3 = number3/1620*100
-    percent4 = number4/1620*100
-    percent5 = number5/1620*100
-    percent6 = number6/1620*100
-    percent7 = number7/1620*100
-    percent8 = number8/1620*100
-    percent9 = number9/1620*100
+    percent1 = number1/length*100
+    percent2 = number2/length*100
+    percent3 = number3/length*100
+    percent4 = number4/length*100
+    percent5 = number5/length*100
+    percent6 = number6/length*100
+    percent7 = number7/length*100
+    percent8 = number8/length*100
+    percent9 = number9/length*100
 
     percentages = [percent1, percent2, percent3, percent4, percent5, percent6, percent7, percent8, percent9]
 
