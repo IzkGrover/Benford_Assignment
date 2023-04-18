@@ -1,7 +1,4 @@
 import matplotlib
-import os
-
-folder = os.getcwd()
 
 def printMenu():
     print('''
@@ -14,8 +11,7 @@ def printMenu():
           ''')
 
 def loadFile():
-    fileName = folder + "\\sales.csv"
-    file = open(fileName, "r")
+    file = open("sales.csv", "r")
     fileLines = file.readlines()
     file.close()
 
@@ -63,16 +59,16 @@ def analyzeFile(file):
             number9 = number9 + 1
             length = length + 1
 
-    percent1 = number1/length*100
-    percent2 = number2/length*100
-    percent3 = number3/length*100
-    percent4 = number4/length*100
-    percent5 = number5/length*100
-    percent6 = number6/length*100
-    percent7 = number7/length*100
-    percent8 = number8/length*100
-    percent9 = number9/length*100
-    
+    percent1 = round(number1/length*100, 2)
+    percent2 = round(number2/length*100, 2)
+    percent3 = round(number3/length*100, 2)
+    percent4 = round(number4/length*100, 2)
+    percent5 = round(number5/length*100, 2)
+    percent6 = round(number6/length*100, 2)
+    percent7 = round(number7/length*100, 2)
+    percent8 = round(number8/length*100, 2)
+    percent9 = round(number9/length*100, 2)
+
     percentages = [percent1, percent2, percent3, percent4, percent5, percent6, percent7, percent8, percent9]
 
     if 29 <= percent1 <= 32:
