@@ -74,6 +74,13 @@ def analyzeFile(file):
 
     percentages = [percent1, percent2, percent3, percent4, percent5, percent6, percent7, percent8, percent9]
 
+    if 29 <= percent1 <= 32:
+        print("1:", percent1, "2:", percent2, "3:", percent3, "4:", percent4, "5:", percent5, "6:", percent6, "7:", percent7, "8:", percent8, "9:", percent9)
+        print("Based on your data fraud likely did not occur")
+    else:
+        print(percent1, percent2, percent3, percent4, percent5, percent6, percent7, percent8, percent9)
+        print("Based on your data fraud likely did occur")
+
     return percentages
 
 
@@ -168,7 +175,6 @@ while userInput != exitCondition:
 
     elif userInput == fileAnalyze: 
         percentages = analyzeFile(file)
-        print(percentages)
 
     elif userInput == graphGeneration: 
         generateGraph()
