@@ -72,7 +72,7 @@ def analyzeFile(file):
     percent7 = number7/length*100
     percent8 = number8/length*100
     percent9 = number9/length*100
-
+    
     percentages = [percent1, percent2, percent3, percent4, percent5, percent6, percent7, percent8, percent9]
 
     if 29 <= percent1 <= 32:
