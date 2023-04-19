@@ -1,6 +1,10 @@
 from matplotlib import pyplot as plt
 
 def printMenu():
+    '''
+    Displays a menu for the user. Lists the numbers the user needs to input to access
+    the functions of the sales system.
+    '''
     print('''
           Customer and Sales System\n
           1. Load Sales File\n
@@ -11,6 +15,9 @@ def printMenu():
           ''')
 
 def loadFile():
+    '''
+    Opens and reads the sales file
+    '''
     file = open("sales.csv", "r")
     fileLines = file.readlines()
     file.close()
@@ -19,6 +26,14 @@ def loadFile():
     return fileLines
 
 def analyzeFile(file):
+    '''
+    Analyzes the csv file to check which sales data in the file is valid or fraud. It does this
+    by using benford's law which finds the frequency of the first digit and then checks if it is 
+    between 29% and 32%. If it is, the data is valid, if it isn't, the data is fraud. 
+    
+    Parameters:
+    file: The csv sales data file that was read and returned
+    '''
     number1 = 0
     number2 = 0
     number3 = 0
@@ -81,7 +96,13 @@ def analyzeFile(file):
     return percentages
 
 def generateGraph(percentages):
-
+    '''
+    This function uses the information given by the analyzation function to create a bar graph based
+    on the sales data. The graph is then put into a new file along with the sales data in a file. 
+    
+    Parameters:
+    percentages: The frequency of the first digits analyzed in the sales data 
+    '''
     x_values = [1, 2, 3, 4, 5, 6, 7, 8, 9]
     y_values = percentages
     y_value1 = "1 = " + str(y_values[0]) + "%"
