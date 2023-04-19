@@ -29,6 +29,9 @@ def analyzeFile(file):
     Analyzes the csv file to check which sales data in the file is valid or fraud. It does this
     by using benford's law which finds the frequency of the first digit and then checks if it is 
     between 29% and 32%. If it is, the data is valid, if it isn't, the data is fraud. 
+    
+    Parameters:
+                file: The csv sales data file that was read and returned
     '''
 
 
@@ -38,6 +41,9 @@ def generateGraph(percentages):
     '''
     This function uses the information given by the analyzation function to create a bar graph based
     on the sales data. The graph is then put into a new file along with the sales data in a file. 
+    
+    Parameters:
+                percentages: The frequency of the first digits analyzed in the sales data 
     '''
     x_values = [1, 2, 3, 4, 5, 6, 7, 8, 9]
     y_value1 = percentages[0]
