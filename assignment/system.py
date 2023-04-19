@@ -1,4 +1,4 @@
-from matplotlib import pyplot as plt
+import matplotlib.pyplot as plt
 
 def printMenu():
     '''
@@ -147,6 +147,8 @@ fileLoad = "1"
 fileAnalyze = "2"
 graphGeneration = "3"
 exitCondition = "9"
+file = ""
+percentages = ""
 
 while userInput != exitCondition:
     printMenu()                
@@ -156,13 +158,18 @@ while userInput != exitCondition:
         file = loadFile()
 
     elif userInput == fileAnalyze:
-        percentages = analyzeFile(file)
+        if file == "":
+            print("Please load your file first")
+        else:
+            percentages = analyzeFile(file)
 
     elif userInput == graphGeneration:
-        generateGraph(percentages)
+        if percentages == "":
+            print("Please analyze your file first")
+        else:
+            generateGraph(percentages)
 
     else:
         print("Please type in a valid option (A number from 1-9)")
 
 print("Program Terminated")
-
