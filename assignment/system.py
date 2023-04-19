@@ -115,7 +115,26 @@ def analyzeFile(file):
 
 
 def generateGraph():
-    
+    x_values = []
+    y_values = []
+
+    x_values_2 = []
+    y_values_2 = []
+
+    plt.bar(x_values_2, y_values_2, color="navy")
+    plt.bar(x_values, y_values, color="red")
+
+    plt.title("Benford's Law Distribution Leading Digit")
+
+    location = 0 # For the best location
+    plt.legend(["blue", "red"], loc=0)
+
+
+    plt.xlabel("Digit")
+    plt.ylabel("Percent")
+
+    plt.show()
+
     result_fileName = folder + "\\" + "results.csv"
     result_file = open("results.csv", "w")
     result_file.write(percentages)
