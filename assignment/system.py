@@ -34,6 +34,7 @@ def analyzeFile(file):
     Parameters:
     file: The csv sales data file that was read and returned
     '''
+    # Variables
     number1 = 0
     number2 = 0
     number3 = 0
@@ -45,6 +46,7 @@ def analyzeFile(file):
     number9 = 0
     length = 0
 
+    # For loops through the file, tallying all the first digits
     for line in file:
         if "1" in line[4]:
             number1 = number1 + 1
@@ -74,6 +76,7 @@ def analyzeFile(file):
             number9 = number9 + 1
             length = length + 1
 
+    # Divides each first digit totals by the lenth of the file to find the frequency
     percent1 = round(number1/length*100, 2)
     percent2 = round(number2/length*100, 2)
     percent3 = round(number3/length*100, 2)
@@ -86,6 +89,7 @@ def analyzeFile(file):
 
     percentages = [percent1, percent2, percent3, percent4, percent5, percent6, percent7, percent8, percent9]
 
+    # Benford's Law
     if 29 <= percent1 <= 32:
         print("1:", percent1, "2:", percent2, "3:", percent3, "4:", percent4, "5:", percent5, "6:", percent6, "7:", percent7, "8:", percent8, "9:", percent9)
         print("Based on your data fraud likely did not occur")
