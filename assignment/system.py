@@ -1,9 +1,13 @@
-import matplotlib
+import matplotlib.pyplot as plt
 import os
 
 folder = os.getcwd()
 
 def printMenu():
+    '''
+    Displays a menu for the user. Lists the numbers the user needs to input to access
+    the functions of the sales system.
+    '''
     print('''
           Customer and Sales System\n
           1. Load Sales File\n
@@ -21,105 +25,57 @@ def loadFile():
     return fileLines
 
 def analyzeFile(file):
-    number1 = 0
-    number2 = 0
-    number3 = 0
-    number4 = 0
-    number5 = 0
-    number6 = 0
-    number7 = 0
-    number8 = 0
-    number9 = 0
-
-    for line in file:
-        if "1" in line[4]:
-            number1 = number1 + 1
-        if "2" in line[4]:
-            number2 = number2 + 1
-        if "3" in line[4]:
-            number3 = number3 + 1
-        if "4" in line[4]:
-            number4 = number4 + 1
-        if "5" in line[4]:
-            number5 = number5 + 1
-        if "6" in line[4]:
-            number6 = number6 + 1
-        if "7" in line[4]:
-            number7 = number7 + 1
-        if "8" in line[4]:
-            number8 = number8 + 1
-        if "9" in line[4]:
-            number9 = number9 + 1
-
-    percent1 = number1/1620*100
-    percent2 = number2/1620*100
-    percent3 = number3/1620*100
-    percent4 = number4/1620*100
-    percent5 = number5/1620*100
-    percent6 = number6/1620*100
-    percent7 = number7/1620*100
-    percent8 = number8/1620*100
-    percent9 = number9/1620*100
-
-    percentages = [percent1, percent2, percent3, percent4, percent5, percent6, percent7, percent8, percent9]
-
-    return percentages
+    '''
+    Analyzes the csv file to check which sales data in the file is valid or fraud. It does this
+    by using benford's law which finds the frequency of the first digit and then checks if it is 
+    between 29% and 32%. If it is, the data is valid, if it isn't, the data is fraud. 
+    '''
 
 
 
 
+def generateGraph(percentages):
+    '''
+    This function uses the information given by the analyzation function to create a bar graph based
+    on the sales data. The graph is then put into a new file along with the sales data in a file. 
+    '''
+    x_values = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+    y_value1 = percentages[0]
+    y_value2 = percentages[1]
+    y_value3 = percentages[2]
+    y_value4 = percentages[3]
+    y_value5 = percentages[4]
+    y_value6 = percentages[5]
+    y_value7 = percentages[6]
+    y_value8 = percentages[7]
+    y_value9 = percentages[8]
 
+    plt.bar(x_values[1], y_value1, color="green")
+    plt.bar(x_values[0], y_value2, color="red")
 
+    plt.title("Benford's Law Distribution Leading Digit")
 
+    location = 0 # For the best location
+    plt.legend(["blue", "red"], loc=0)
 
+    plt.xlabel("Digit")
+    plt.ylabel("Percent")
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-def generateGraph():
+    plt.show()
+    
+    picture = plt.savefig("ResultsGraph.png", bbox_inches="tight")
+    
+    plt.close(plt)
     
     result_fileName = folder + "\\" + "results.csv"
     result_file = open("results.csv", "w")
     result_file.write(percentages)
+    result_file.write(picture)
     result_file.close()
+    picture_fileName = folder + "\\" + "ResultsGraph.png"
+    result_file_pic = open("ResultsGraph.png", "w")
+    result_file_pic.write(picture)
+    result_file_pic.close()
     
 
 
@@ -167,7 +123,7 @@ while userInput != exitCondition:
         
 
     elif userInput == graphGeneration: 
-        generateGraph()
+        generateGraph(percentages)
 
     else:
         print("Please type in a valid option (A number from 1-9)")
