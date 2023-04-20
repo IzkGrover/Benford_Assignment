@@ -1,7 +1,4 @@
 import matplotlib.pyplot as plt
-import os
-
-folder = os.getcwd()
 
 def printMenu():
     '''
@@ -75,54 +72,14 @@ def generateGraph(percentages):
     plt.xlabel("Digit")
     plt.ylabel("Percent")
     plt.show()
-    image = plt.savefig("graph.png")
     plt.close()
-
-    location = 0 
-    plt.legend(["blue", "red"], loc=0)
-
-    plt.xlabel("Digit")
-    plt.ylabel("Percent")
-
-    plt.show()
     
-    picture = plt.savefig("ResultsGraph.png", bbox_inches="tight")
-    
-    plt.close(plt)
-    
-    result_fileName = folder + "\\" + "results.csv"
-    result_file = open("results.csv", "w")
-    result_file.write(percentages)
-    result_file.write(picture)
+    table = "1" + "," + "2" + "," + "3" + "," + "4" + "," + "5", "," + "6" + "," + "7" + "," + "8" + "," + "9\n" + str(percentages[0]) + "," + str(percentages[1]) + "," + str(percentages[2]) + "," + str(percentages[3]) + "," + str(percentages[4]) + "," + str(percentages[5]) + "," + str(percentages[6]) + "," + str(percentages[7]) + "," + str(percentages[8])
+    result_fileName = "results.csv"
+    result_file = open(result_fileName, "w")
+    result_file.writelines(table)
     result_file.close()
-    picture_fileName = folder + "\\" + "ResultsGraph.png"
-    result_file_pic = open("ResultsGraph.png", "w")
-    result_file_pic.write(picture)
-    result_file_pic.close()
     
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
