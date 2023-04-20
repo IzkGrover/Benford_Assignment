@@ -137,7 +137,8 @@ def generateGraph(percentages):
     plt.bar(x_values[7], y_values[7], color="black")
     plt.bar(x_values[8], y_values[8], color="brown")
 
-    # Labels the x axis, y axis, creates a legend, gives the graph a title, and shows the graph    plt.title("Benford's Law Distribution Leading Digit")
+    # Labels the x axis, y axis, creates a legend, gives the graph a title, and shows the graph    
+    plt.title("Benford's Law Distribution Leading Digit")
     plt.legend([y_value1, y_value2, y_value3, y_value4, y_value5, y_value6, y_value7, y_value8, y_value9], loc=0)
     plt.xlabel("Digit")
     plt.ylabel("Percent")
