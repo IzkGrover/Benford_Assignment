@@ -18,6 +18,9 @@ def printMenu():
           ''')
 
 def loadFile():
+    '''
+    Opens and reads the sales file to be used later on.
+    '''
     fileName = folder + "\\sales.csv"
     file = open(fileName, "r")
     fileLines = file.readlines()
