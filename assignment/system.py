@@ -21,10 +21,11 @@ def loadFile():
     '''
     Opens and reads the sales file to be used later on.
     '''
-    fileName = folder + "\\sales.csv"
-    file = open(fileName, "r")
+    file = open("sales.csv", "r")
     fileLines = file.readlines()
+    file.close()
 
+    print("File Loaded")
     return fileLines
 
 def analyzeFile(file):
@@ -34,11 +35,72 @@ def analyzeFile(file):
     between 29% and 32%. If it is, the data is valid, if it isn't, the data is fraud. 
     
     Parameters:
-                file: The csv sales data file that was read and returned
+    file: The csv sales data file that was read and returned
     '''
+    # Variables
+    number1 = 0
+    number2 = 0
+    number3 = 0
+    number4 = 0
+    number5 = 0
+    number6 = 0
+    number7 = 0
+    number8 = 0
+    number9 = 0
+    length = 0
 
+    # For loops through the file, tallying all the first digits
+    for line in file:
+        if "1" in line[4]:
+            number1 = number1 + 1
+            length = length + 1
+        if "2" in line[4]:
+            number2 = number2 + 1
+            length = length + 1
+        if "3" in line[4]:
+            number3 = number3 + 1
+            length = length + 1
+        if "4" in line[4]:
+            number4 = number4 + 1
+            length = length + 1
+        if "5" in line[4]:
+            number5 = number5 + 1
+            length = length + 1
+        if "6" in line[4]:
+            number6 = number6 + 1
+            length = length + 1
+        if "7" in line[4]:
+            number7 = number7 + 1
+            length = length + 1
+        if "8" in line[4]:
+            number8 = number8 + 1
+            length = length + 1
+        if "9" in line[4]:
+            number9 = number9 + 1
+            length = length + 1
 
+    # Divides each first digit totals by the lenth of the file to find the frequency
+    percent1 = round(number1/length*100, 2)
+    percent2 = round(number2/length*100, 2)
+    percent3 = round(number3/length*100, 2)
+    percent4 = round(number4/length*100, 2)
+    percent5 = round(number5/length*100, 2)
+    percent6 = round(number6/length*100, 2)
+    percent7 = round(number7/length*100, 2)
+    percent8 = round(number8/length*100, 2)
+    percent9 = round(number9/length*100, 2)
 
+    percentages = [percent1, percent2, percent3, percent4, percent5, percent6, percent7, percent8, percent9]
+
+    # Benford's Law
+    if 29 <= percent1 <= 32:
+        print("1:", percent1, "2:", percent2, "3:", percent3, "4:", percent4, "5:", percent5, "6:", percent6, "7:", percent7, "8:", percent8, "9:", percent9)
+        print("Based on your data fraud likely did not occur")
+    else:
+        print("1:", percent1, "2:", percent2, "3:", percent3, "4:", percent4, "5:", percent5, "6:", percent6, "7:", percent7, "8:", percent8, "9:", percent9)        
+        print("Based on your data fraud likely did occur")
+
+    return percentages
 
 def generateGraph(percentages):
     '''
@@ -89,10 +151,6 @@ def generateGraph(percentages):
     result_file = open(result_fileName, "w")
     result_file.writelines(table)
     result_file.close()
-    
-
-
-
 
 #The variables that the user uses to access the different parts of the program
 userInput = ""
@@ -105,19 +163,23 @@ percentages = ""
 
 #Checks which number the user inputted and directs them to the correct function
 while userInput != exitCondition:
-    printMenu()                 
-    userInput = input(); 
+    printMenu()                
+    userInput = input()
 
     if userInput == fileLoad:
         file = loadFile()
 
-    elif userInput == fileAnalyze: 
-        percentages = analyzeFile(file)
-        print(percentages)
-        
+    elif userInput == fileAnalyze:
+        if file == "":
+            print("Please load your file first")
+        else:
+            percentages = analyzeFile(file)
 
-    elif userInput == graphGeneration: 
-        generateGraph(percentages)
+    elif userInput == graphGeneration:
+        if percentages == "":
+            print("Please analyze your file first")
+        else:
+            generateGraph(percentages)
 
     else:
         print("Please type in a valid option (A number from 1-9)")
