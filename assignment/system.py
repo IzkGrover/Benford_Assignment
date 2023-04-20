@@ -1,3 +1,7 @@
+#Benford's Law Assignment
+
+
+#Imports matplotlib for use in order to make the sales data chart
 import matplotlib.pyplot as plt
 
 def printMenu():
