@@ -46,22 +46,36 @@ def generateGraph(percentages):
                 percentages: The frequency of the first digits analyzed in the sales data 
     '''
     x_values = [1, 2, 3, 4, 5, 6, 7, 8, 9]
-    y_value1 = percentages[0]
-    y_value2 = percentages[1]
-    y_value3 = percentages[2]
-    y_value4 = percentages[3]
-    y_value5 = percentages[4]
-    y_value6 = percentages[5]
-    y_value7 = percentages[6]
-    y_value8 = percentages[7]
-    y_value9 = percentages[8]
+    y_values = percentages
+    y_value1 = "1 = " + str(y_values[0]) + "%"
+    y_value2 = "2 = " + str(y_values[1]) + "%"
+    y_value3 = "3 = " + str(y_values[2]) + "%"
+    y_value4 = "4 = " + str(y_values[3]) + "%"
+    y_value5 = "5 = " + str(y_values[4]) + "%"
+    y_value6 = "6 = " + str(y_values[5]) + "%"
+    y_value7 = "7 = " + str(y_values[6]) + "%"
+    y_value8 = "8 = " + str(y_values[7]) + "%"
+    y_value9 = "9 = " + str(y_values[8]) + "%"
 
-    plt.bar(x_values[1], y_value1, color="green")
-    plt.bar(x_values[0], y_value2, color="red")
+    plt.bar(x_values[0], y_values[0], color="red")
+    plt.bar(x_values[1], y_values[1], color="green")
+    plt.bar(x_values[2], y_values[2], color="blue")
+    plt.bar(x_values[3], y_values[3], color="orange")
+    plt.bar(x_values[4], y_values[4], color="yellow")
+    plt.bar(x_values[5], y_values[5], color="pink")
+    plt.bar(x_values[6], y_values[6], color="purple")
+    plt.bar(x_values[7], y_values[7], color="black")
+    plt.bar(x_values[8], y_values[8], color="brown")
 
     plt.title("Benford's Law Distribution Leading Digit")
+    plt.legend([y_value1, y_value2, y_value3, y_value4, y_value5, y_value6, y_value7, y_value8, y_value9], loc=0)
+    plt.xlabel("Digit")
+    plt.ylabel("Percent")
+    plt.show()
+    image = plt.savefig("graph.png")
+    plt.close()
 
-    location = 0 # For the best location
+    location = 0 
     plt.legend(["blue", "red"], loc=0)
 
     plt.xlabel("Digit")
