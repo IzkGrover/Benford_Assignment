@@ -107,7 +107,11 @@ def generateGraph(percentages):
     Parameters:
     percentages: The frequency of the first digits analyzed in the sales data 
     '''
-    x_values = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+    
+    # The x values that display which bar is which
+    x_values = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
+    
+    # The y values that determine how high each bar is based on the percentages
     y_values = percentages
     y_value1 = "1 = " + str(y_values[0]) + "%"
     y_value2 = "2 = " + str(y_values[1]) + "%"
@@ -119,6 +123,7 @@ def generateGraph(percentages):
     y_value8 = "8 = " + str(y_values[7]) + "%"
     y_value9 = "9 = " + str(y_values[8]) + "%"
 
+    # Plots each bar on each x and y value accordingly
     plt.bar(x_values[0], y_values[0], color="red")
     plt.bar(x_values[1], y_values[1], color="green")
     plt.bar(x_values[2], y_values[2], color="blue")
@@ -129,19 +134,21 @@ def generateGraph(percentages):
     plt.bar(x_values[7], y_values[7], color="black")
     plt.bar(x_values[8], y_values[8], color="brown")
 
-    plt.title("Benford's Law Distribution Leading Digit")
+    # Labels the x axis, y axis, creates a legend, gives the graph a title, and shows the graph    plt.title("Benford's Law Distribution Leading Digit")
     plt.legend([y_value1, y_value2, y_value3, y_value4, y_value5, y_value6, y_value7, y_value8, y_value9], loc=0)
     plt.xlabel("Digit")
     plt.ylabel("Percent")
     plt.show()
     plt.close()
 
+    # Writes the sales data onto the results csv file
     table = "1" + "," + "2" + "," + "3" + "," + "4" + "," + "5", "," + "6" + "," + "7" + "," + "8" + "," + "9\n" + str(percentages[0]) + "," + str(percentages[1]) + "," + str(percentages[2]) + "," + str(percentages[3]) + "," + str(percentages[4]) + "," + str(percentages[5]) + "," + str(percentages[6]) + "," + str(percentages[7]) + "," + str(percentages[8])
     result_fileName = "results.csv"
     result_file = open(result_fileName, "w")
     result_file.writelines(table)
     result_file.close()
 
+# The variables that the user uses to access the different parts of the program
 userInput = ""
 fileLoad = "1"
 fileAnalyze = "2"
@@ -150,6 +157,7 @@ exitCondition = "9"
 file = ""
 percentages = ""
 
+# Checks which number the user inputted and directs them to the correct function
 while userInput != exitCondition:
     printMenu()                
     userInput = input()
